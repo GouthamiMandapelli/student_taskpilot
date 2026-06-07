@@ -170,6 +170,9 @@ index.html
 Or launch using VS Code Live Server.
 
 ---
+🌐 Live Demo
+
+https://gouthamimandapelli.github.io/student_taskpilot/
 
 ## 📈 Learning Outcomes
 
