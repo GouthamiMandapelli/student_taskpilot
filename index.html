@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student TaskPilot</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+</head>
+<body>
+
+<!-- ===================================== -->
+<!-- WELCOME SCREEN -->
+<!-- ===================================== -->
+
+<section id="welcome-screen" class="welcome-screen">
+
+    <div class="welcome-card glass">
+
+        <div class="logo-box">
+            <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+
+        <h1>Student TaskPilot</h1>
+
+        <p>
+            Organize Tasks, Track Goals,
+            Focus Better and Boost Productivity.
+        </p>
+
+        <button id="getStartedBtn" class="primary-btn">
+            Get Started
+        </button>
+
+        <div class="feature-grid">
+
+            <div class="feature-item">
+                <i class="fa-solid fa-list-check"></i>
+                <span>Tasks</span>
+            </div>
+
+            <div class="feature-item">
+                <i class="fa-solid fa-bullseye"></i>
+                <span>Goals</span>
+            </div>
+
+            <div class="feature-item">
+                <i class="fa-solid fa-stopwatch"></i>
+                <span>Focus</span>
+            </div>
+
+            <div class="feature-item">
+                <i class="fa-solid fa-note-sticky"></i>
+                <span>Notes</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ===================================== -->
+<!-- MAIN APP -->
+<!-- ===================================== -->
+
+<div id="app-container" class="hidden">
+
+    <!-- HEADER -->
+
+    <header class="top-header glass">
+
+        <div>
+            <h2 id="greeting">Good Morning</h2>
+            <p id="currentDate"></p>
+        </div>
+
+        <button id="themeToggle" class="theme-btn">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+
+    </header>
+
+    <!-- HOME SECTION -->
+
+    <section id="home-section" class="section active-section">
+
+        <!-- Quote -->
+
+        <div class="quote-card glass">
+            <h3>Daily Motivation</h3>
+            <p id="dailyQuote">
+                Success is the sum of small efforts repeated daily.
+            </p>
+        </div>
+
+        <!-- Score -->
+
+        <div class="dashboard-grid">
+
+            <div class="stat-card glass">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3 id="productivityScore">0%</h3>
+                <p>Productivity</p>
+            </div>
+
+            <div class="stat-card glass">
+                <i class="fa-solid fa-fire"></i>
+                <h3 id="studyStreak">0</h3>
+                <p>Study Streak</p>
+            </div>
+
+            <div class="stat-card glass">
+                <i class="fa-solid fa-check-circle"></i>
+                <h3 id="completedTasks">0</h3>
+                <p>Completed</p>
+            </div>
+
+            <div class="stat-card glass">
+                <i class="fa-solid fa-list"></i>
+                <h3 id="totalTasks">0</h3>
+                <p>Total Tasks</p>
+            </div>
+
+        </div>
+
+        <!-- Progress Ring -->
+
+        <div class="progress-wrapper glass">
+
+            <h3>Overall Progress</h3>
+
+            <div class="progress-ring">
+                <svg width="180" height="180">
+
+                    <circle
+                        class="ring-bg"
+                        cx="90"
+                        cy="90"
+                        r="75">
+                    </circle>
+
+                    <circle
+                        id="ringProgress"
+                        class="ring-progress"
+                        cx="90"
+                        cy="90"
+                        r="75">
+                    </circle>
+
+                </svg>
+
+                <div class="ring-text" id="ringText">
+                    0%
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- TASKS SECTION -->
+
+    <section id="tasks-section" class="section">
+
+        <div class="section-header">
+            <h2>Task Manager</h2>
+        </div>
+
+        <div class="glass task-form">
+
+            <input
+                type="text"
+                id="taskInput"
+                placeholder="Enter task..."
+            >
+
+            <select id="prioritySelect">
+                <option value="High">High Priority</option>
+                <option value="Medium">Medium Priority</option>
+                <option value="Low">Low Priority</option>
+            </select>
+
+            <button id="addTaskBtn" class="primary-btn">
+                Add Task
+            </button>
+
+        </div>
+
+        <div class="glass search-box">
+            <input
+                type="text"
+                id="taskSearch"
+                placeholder="Search tasks..."
+            >
+        </div>
+
+        <ul id="taskList"></ul>
+
+    </section>
+
+    <!-- GOALS SECTION -->
+
+    <section id="goals-section" class="section">
+
+        <div class="section-header">
+            <h2>Goal Tracker</h2>
+        </div>
+
+        <div class="glass goal-card">
+
+            <label>Daily Study Goal (hours)</label>
+
+            <input
+                type="number"
+                id="dailyGoal"
+                min="1"
+                placeholder="e.g. 4"
+            >
+
+            <label>Weekly Goal (hours)</label>
+
+            <input
+                type="number"
+                id="weeklyGoal"
+                min="1"
+                placeholder="e.g. 25"
+            >
+
+            <button
+                id="saveGoalsBtn"
+                class="primary-btn">
+                Save Goals
+            </button>
+
+        </div>
+
+        <div class="glass goal-progress">
+
+            <h4>Daily Goal Progress</h4>
+
+            <div class="progress-bar">
+                <div id="dailyBar"></div>
+            </div>
+
+            <span id="dailyPercent">0%</span>
+
+        </div>
+
+        <div class="glass goal-progress">
+
+            <h4>Weekly Goal Progress</h4>
+
+            <div class="progress-bar">
+                <div id="weeklyBar"></div>
+            </div>
+
+            <span id="weeklyPercent">0%</span>
+
+        </div>
+
+    </section>
+
+    <!-- POMODORO SECTION -->
+
+    <section id="focus-section" class="section">
+
+        <div class="section-header">
+            <h2>Focus Timer</h2>
+        </div>
+
+        <div class="glass timer-card">
+
+            <div id="timerDisplay">
+                25:00
+            </div>
+
+            <div class="timer-buttons">
+
+                <button
+                    id="startTimer"
+                    class="primary-btn">
+                    Start
+                </button>
+
+                <button
+                    id="pauseTimer"
+                    class="secondary-btn">
+                    Pause
+                </button>
+
+                <button
+                    id="resetTimer"
+                    class="danger-btn">
+                    Reset
+                </button>
+
+            </div>
+
+            <div class="session-box">
+
+                Sessions Completed:
+                <span id="sessionCount">0</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- NOTES SECTION -->
+
+    <section id="notes-section" class="section">
+
+        <div class="section-header">
+            <h2>Quick Notes</h2>
+        </div>
+
+        <div class="glass notes-card">
+
+            <textarea
+                id="notesArea"
+                placeholder="Write notes here..."
+            ></textarea>
+
+            <button
+                id="exportNotes"
+                class="primary-btn">
+                Export Notes
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+
+    <section class="achievement-section">
+
+        <div class="glass achievement-card">
+
+            <h3>Achievements</h3>
+
+            <div id="achievementContainer">
+
+                <span class="badge">
+                    🚀 Beginner
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<!-- ===================================== -->
+<!-- BOTTOM NAVIGATION -->
+<!-- ===================================== -->
+
+<nav class="bottom-nav hidden" id="bottomNav">
+
+    <button class="nav-btn active" data-target="home-section">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+    </button>
+
+    <button class="nav-btn" data-target="tasks-section">
+        <i class="fa-solid fa-list-check"></i>
+        <span>Tasks</span>
+    </button>
+
+    <button class="nav-btn" data-target="goals-section">
+        <i class="fa-solid fa-bullseye"></i>
+        <span>Goals</span>
+    </button>
+
+    <button class="nav-btn" data-target="focus-section">
+        <i class="fa-solid fa-stopwatch"></i>
+        <span>Focus</span>
+    </button>
+
+    <button class="nav-btn" data-target="notes-section">
+        <i class="fa-solid fa-note-sticky"></i>
+        <span>Notes</span>
+    </button>
+
+</nav>
+
+<!-- TOAST -->
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
