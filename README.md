@@ -171,30 +171,6 @@ Or launch using VS Code Live Server.
 
 ---
 
-## 🌐 Live Demo
-
-After enabling GitHub Pages:
-
-```text
-https://YOUR_USERNAME.github.io/student-taskpilot/
-```
-
----
-
-## 💡 Future Roadmap
-
-* User Authentication
-* Cloud Synchronization
-* Study Analytics Charts
-* Calendar Integration
-* Reminder Notifications
-* Progressive Web App (PWA)
-* Drag & Drop Tasks
-* Subject-wise Goal Tracking
-* AI Study Assistant
-
----
-
 ## 📈 Learning Outcomes
 
 This project demonstrates:
