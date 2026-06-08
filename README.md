@@ -102,21 +102,6 @@ Student TaskPilot follows a modern startup-inspired design language:
 
 ---
 
-## 📁 Project Structure
-
-```text
-student-taskpilot/
-│
-├── index.html
-├── style.css
-├── script.js
-├── README.md
-│
-└── assets/
-```
-
----
-
 ## 📱 Responsive Experience
 
 Optimized for:
